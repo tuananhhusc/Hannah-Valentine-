@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.3/lottie_svg.min.js"></script>
+    <title>Gift for my Hannah Nguyễn</title>
+    <link rel="icon" href="icons/tab-icon.png" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="img" href="img\tab-icon.png" />
+</head>
+
+<body style="font-family: 'Comic Neue';" class="relative">
+
+    <!-- MUSIC PLAYER -->
+    <div class="fixed left-6 bottom-6 z-10">
+        <div
+            class="music-container relative bg-neutral-100 py-3 px-3 border-2 z-10 rounded-md border-black flex items-center">
+            <div class="toggle-player bg-neutral-100 border-2 border-black">
+                <img class="w-full" src="icons/close.svg" alt="">
+            </div>
+            <div class="avatar absolute w-14">
+                <img class="w-full border-2 bg-white border-black rounded-md" src="icons/pinkheart.svg" alt="">
+            </div>
+            <div class="player">
+                <div class="sound-bars-lottie">
+                    <div class="sound-bars"></div>
+                </div>
+                <div class="track-info -space-y-1">
+                    <div class="trackname">Only</div>
+                    <div class="trackartist">Track Artist</div>
+                </div>
+                <div class="track-nav">
+                    <div class="prev-track">
+                        <img class="w-7" src="icons/backplayer.svg" alt="">
+                    </div>
+                    <div class="playpause-track">
+                        <img class="w-8" src="icons/play.svg" alt="">
+                    </div>
+                    <div class="next-track">
+                        <img class="w-7" style="transform: rotate(180deg);" src="icons/backplayer.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="background">
+        <div class="one">
+            <img src="img\background4.jpg" alt="">
+            <div class="container">
+                <div class="envelope-wrapper">
+                    <div class="envelope">
+                        <div class="letter">
+                            <div class="text">
+                            <div class="text" style="padding: 10px; box-sizing: border-box;"></div>
+                             <div class="image-container">
+                              <img src="img/IMG_0467.JPG" class="letter-img" alt="Photo 1">
+                             </div>
+                                <strong style="font-size: .89rem;">Dear My Hannah,</strong>
+                                <p style="text-indent: 15px;">
+                                    On this sweet Valentine's Day, I want to send you my most sincere words of love. You are the greatest gift that life has given me. Every day with you is a day filled with happiness and meaning.
+                    
+                                    Your tenderness is like the morning sun, warming my heart. Your strength and resilience inspire me every single day. And your love, like a steady anchor, is always there for me through every moment of life.
+                                    
+                                    No words can fully express how much I love you. But I promise to spend my entire life proving it to you. I love you so much — today, tomorrow, and forever. 💖
+                                </p>
+                                <p class="love">I LOVE YOU SO MUCH</p>
+                                <div class="pana">
+                                    <div class="gif-container">
+                                        <img src="https://media.tenor.com/A5VhCveZ_ygAAAAi/peach-and-goma-peach-goma.gif" alt="Love GIF" class="love-gif">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="heart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        const images = document.querySelectorAll('.letter-img');
+            let imageIndex = 0;
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+            envelope.classList.toggle('open');
+            if (envelope.classList.contains('open')) {
+                const interval = setInterval(() => {
+                    if (imageIndex < images.length) {
+                        images[imageIndex].classList.add('show');
+                        imageIndex++;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 1000); // Adjust the interval time as needed
+            } else {
+                images.forEach(img => img.classList.remove('show'));
+                imageIndex = 0;
+            }
+        });
+    </script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
