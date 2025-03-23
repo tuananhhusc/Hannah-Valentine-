@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ff99cc;
+            /* Màu hồng nhạt */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: #ffffff;
+            width: 400px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s ease;
+            /* Hiệu ứng mờ dần */
+        }
+
+        .login-container.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff3399;
+            /* Hồng đậm */
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ff99cc;
+            /* Viền hồng nhạt */
+            border-radius: 8px;
+            font-size: 16px;
+            background: #fff0f5;
+            /* Nền hồng rất nhạt */
+            color: #333;
+        }
+
+        input:focus {
+            border-color: #ff3399;
+            /* Hồng đậm khi focus */
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #ff99cc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff3399;
+            /* Nút hồng đậm */
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #e60073;
+            /* Hồng đậm hơn khi hover */
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            color: #ff3399;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+            color: #e60073;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ff0000;
+            /* Thông báo lỗi màu đỏ */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container" id="login-container">
+        <h2>Đăng Nhập</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+            </div>
+            <button type="submit">Đăng Nhập</button>
+            <div class="links">
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+            <div class="message" id="login-message"></div>
+        </form>
+    </div>
+
+    <script>
+        // Cơ sở dữ liệu giả lập
+        let users = [
+            { email: "tuananhqhvl777@gmail.com", password: "123456" }
+        ];
+
+        // Xử lý đăng nhập
+            document.getElementById('login-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = e.target.email.value;
+                const password = e.target.password.value;
+                const message = document.getElementById('login-message');
+
+                const user = users.find(user => user.email === email && user.password === password);
+
+                if (user) {
+                    message.style.color = "#008000";
+                    message.textContent = "Đăng nhập thành công!";
+                    e.target.reset();
+                    // Chuyển hướng sau 1 giây
+                    setTimeout(() => {
+                        window.location.href = "dashboard.html"; // Chuyển đến trang dashboard
+                    }, 1000);
+                } else {
+                    message.textContent = "Email hoặc mật khẩu không đúng!";
+                }
+            });
+        </script>
+    </body>
+    
+    </html>
