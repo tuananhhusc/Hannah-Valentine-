@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Our Days Together</title>
+    <link rel="icon" href="icons/tab-icon.png" />
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(135deg, #ffe6f0 0%, #fff0f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .love-counter {
+            background-color: #cd7f7f;
+            padding: 2rem;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .love-counter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .heart-icon {
+            width: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        .days-together {
+            color: #ff1493;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .label {
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .title {
+            color: #ff69b4;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Hiệu ứng trái tim nổi */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            opacity: 0.7;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="love-counter">
+        <div class="title">Our Time Together</div>
+        <div class="heart-icon">
+            <img class="w-full" src="icons/pinkheart.svg" alt="Heart">
+        </div>
+        <div class="counter-text">
+            <div class="days-together" id="daysCount">0</div>
+            <div class="label">Days of Love</div>
+        </div>
+    </div>
+
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <script>
+        // Tính số ngày bên nhau
+        function calculateDaysTogether() {
+            const startDate = new Date('2025-02-22'); // Thay đổi ngày bắt đầu thực tế của bạn
+            const currentDate = new Date();
+            const timeDifference = currentDate - startDate;
+            const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            document.getElementById('daysCount').textContent = daysDifference;
+        }
+
+        // Tạo hiệu ứng trái tim nổi
+        function createFloatingHeart() {
+            const heart = document.createElement('img');
+            heart.src = 'icons/pinkheart.svg';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            document.getElementById('floatingHearts').appendChild(heart);
+
+            // Xóa trái tim sau khi animation hoàn thành
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        // Khởi chạy khi trang load
+        window.onload = function () {
+            calculateDaysTogether();
+            setInterval(calculateDaysTogether, 86400000); // Cập nhật mỗi ngày
+
+            // Tạo trái tim mới mỗi 0.5 giây
+            setInterval(createFloatingHeart, 500);
+        };
+    </script>
+</body>
+
+</html>
