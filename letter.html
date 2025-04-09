@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.3/lottie_svg.min.js"></script>
+    <title>Gift for my Hannah Nguyễn</title>
+    <link rel="icon" href="icons/tab-icon.png" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="img" href="img\tab-icon.png" />
+
+</head>
+
+<body style="font-family: 'Comic Neue';" class="relative">
+
+    <!-- BACKGROUND -->
+    <div class="background">
+        <div class="one">
+            <div class="container">
+                <div class="envelope-wrapper">
+                    <div class="envelope">
+                        <div class="letter">
+                            <div class="text">
+                                <div class="text" style="padding: 10px; box-sizing: border-box;"></div>
+                                <div class="image-container">
+                                    <img src="img\IMG_8194.JPEG" class="letter-img" alt="Photo 1">
+                                </div>
+                                <strong style="font-size: .89rem;">My beloved wife,</strong>
+                                <p style="text-indent: 15px;">
+                                    Life is truly full of ironies, isn’t it? I sit here, my heart heavy with endless regrets. I love you with a burning
+                                    passion, and I cherish the dreams we once held together. Perhaps fate never intended for us to have a happy ending.
+                                    
+                                    I must learn to accept it once again—to let go, even as my heart cries out in protest. I must accept that the days ahead
+                                    will no longer have your presence beside me. I know it will hurt deeply, but I hope you’ll walk away gently.
+                                    
+                                    Thank you—for coloring my life with the sweetest love, with the brightest hopes. You were a precious gift I could not
+                                    hold on to, but my gratitude remains whole and unwavering.
+                                    
+                                    I wish you a peaceful future, where your dreams will bloom and bear fruit. I hope you find someone more deserving than I
+                                    am—someone who can hold your hand until the very end of the road. If one day you smile happily beside someone else,
+                                    please believe that somewhere far away, I too am smiling for you.
+                                    
+                                    I’m sorry for the promises I couldn’t keep. But please grant me one last favor: live fully, and let your smile shine
+                                    brightly, just like the day we first met. No matter what the future holds, I will always keep a small corner of my heart
+                                    reserved for you. If fate gives us another chance, I would gladly continue our unfinished story by your side.
+                                </p>
+                                <p class="love">Loving and cherishing you,
+                                                Always.</p>
+                                <div class="pana">
+                                    <div class="gif-container">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="heart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        const images = document.querySelectorAll('.letter-img');
+        let imageIndex = 0;
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+            envelope.classList.toggle('open');
+            if (envelope.classList.contains('open')) {
+                const interval = setInterval(() => {
+                    if (imageIndex < images.length) {
+                        images[imageIndex].classList.add('show');
+                        imageIndex++;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 1000); // Adjust the interval time as needed
+            } else {
+                images.forEach(img => img.classList.remove('show'));
+                imageIndex = 0;
+            }
+        });
+    </script>
+    <a href="days-together.html" class="text-pink-500 underline">See our days together!</a>
+    <script src="app.js"></script>
+</body>
+
+</html>
